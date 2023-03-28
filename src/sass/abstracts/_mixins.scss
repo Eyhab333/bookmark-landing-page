@@ -1,0 +1,30 @@
+@use './variables';
+
+@mixin mq($key) {
+	$size: map-get(variables.$breakpoints, $key);
+
+	@media only screen and (min-width: $size) {
+		@content;
+	}
+}
+
+@mixin max-mq($key) {
+	$size: map-get(variables.$breakpoints, $key);
+
+	@media only screen and (max-width: calc(#{$size} - 1px)) {
+		@content;
+	}
+}
+
+@mixin pill-shape {
+	/* measurement from design */
+	--pill-width: 100rem;
+	--pill-height: 20.3rem;
+	width: var(--pill-width);
+	height: var(--pill-height);
+	background-color: var(--pill-color, var(--clr-primary-400));
+	border-radius: var(--borr-900);
+	@include mq(large) {
+		--pill-height: 35.2rem;
+	}
+}

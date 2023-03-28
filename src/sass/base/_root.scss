@@ -1,0 +1,55 @@
+@use '../abstracts/variables';
+@use '../abstracts/mixins';
+
+:root {
+	// colors
+	@each $color, $shades in variables.$colors {
+		@each $shade, $value in $shades {
+			--clr-#{$color}-#{$shade}: #{$value};
+		}
+	}
+
+	// shadows
+	--shadow-primary-200: 0 0.8rem 0.8rem var(--clr-primary-320);
+	--shadow-primary-400: 0 1rem 2rem var(--clr-primary-320);
+
+	// font families
+	--ff-primary: 'Rubik', sans-serif;
+
+	// font weights
+	@each $font-weight, $value in variables.$font-weights {
+		--fw-#{$font-weight}: #{$value};
+	}
+
+	// font sizes
+	@each $screen, $sizes in variables.$font-sizes {
+		@if $screen == small {
+			@each $size, $value in $sizes {
+				--fz-#{$size}: #{$value};
+			}
+		} @else {
+			@include mixins.mq($screen) {
+				@each $size, $value in $sizes {
+					--fz-#{$size}: #{$value};
+				}
+			}
+		}
+	}
+
+	// letter spacings
+	@each $size, $value in variables.$letter-spacings {
+		--ls-#{$size}: #{$value};
+	}
+
+	// border radius
+	@each $radius, $value in variables.$border-radius {
+		--borr-#{$radius}: #{$value};
+	}
+
+	// spacers
+	@each $unit, $sizes in variables.$spacers {
+		@each $size, $value in $sizes {
+			--spacer-#{$unit}-#{$size}: #{$value};
+		}
+	}
+}

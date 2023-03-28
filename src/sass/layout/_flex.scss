@@ -1,0 +1,30 @@
+[class*='flex'] {
+	display: flex;
+}
+
+.flex-column {
+	flex-direction: column;
+}
+
+.flex-socials {
+	align-items: center;
+	gap: var(--spacer-rem-500, 1em);
+}
+
+.flex-space-between {
+	justify-content: space-between;
+	align-items: center;
+	gap: var(--flex-space-between-spacer, 1em);
+}
+
+.flex-button-group {
+	align-items: center;
+	gap: var(--spacer-rem-200, 1em);
+}
+
+.flex-cards {
+	flex-wrap: wrap;
+	justify-content: center;
+	align-items: flex-start;
+	gap: var(--spacer-rem-450);
+}
